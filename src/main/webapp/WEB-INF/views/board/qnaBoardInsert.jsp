@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Q&ABoard NewInsert</title>
 <script src="resources/jqLib/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="resources/css/board/qnaBoardInsert.css">
+<link rel="stylesheet" href="resources/css/qnaBoardInsert.css">
 </head>
 <body>
 	<form acrtion="nbinsert" method="post">

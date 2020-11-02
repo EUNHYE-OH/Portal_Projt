@@ -20,7 +20,7 @@ background-size: 80%;
 background-position: center;
 width: 100%;
 margin: 0 auto;
-height: 600px;
+height: 100%;
 margin-bottom: 1px;
 }
 
@@ -43,7 +43,7 @@ border: 1px solid black;
 
 #contents{
 width: 600px;
-height: 400px;
+height: 500px;
 border-radius: 5px;
 }
 

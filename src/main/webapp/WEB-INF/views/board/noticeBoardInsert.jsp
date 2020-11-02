@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>NoticeBoard NewInsert</title>
 <script src="resources/jqLib/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="resources/css/board/noticeBoardInsert.css">
+<link rel="stylesheet" href="resources/css/noticeBoardInsert.css">
 </head>
 <body>
 	<form acrtion="nbinsert" method="post">
@@ -29,7 +29,7 @@
 				</tr>
 				<tr height="40">
 					<td bgcolor="#566881" style="border-radius: 5px; text-align: center; 
-					color: white; border: 1px solid #000033; width: 70px;">파일첨부</td>
+					color: white; border: 1px solid #000033; width: 70px;">첨부파일</td>
 					<td><img src="" class="attachment">
 					<input type="file" name="attfile" id="attfile"><br>
 					<script>

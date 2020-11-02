@@ -7,7 +7,7 @@ header {
 	border: 1px solid #000033;
 	margin: 0 auto;
 	width: 350px;
-	height: 560px;
+	height: 65%;
 	margin-bottom: 20px;
 	border-radius: 5px;
 }
@@ -64,6 +64,8 @@ header {
 
 footer {
 	border-top: 1px solid black;
+	position: absolute;
+	width: 100%;
 }
 
 footer>div {

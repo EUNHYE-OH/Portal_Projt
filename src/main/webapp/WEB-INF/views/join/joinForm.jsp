@@ -5,7 +5,7 @@
 <title>Home</title>
 <script src="resources/jqLib/jquery-3.2.1.min.js"></script>
 <script src="resources/jqLib/joinCheck.js"></script>
-<link rel="stylesheet" href="resources/css/join/joinForm.css">
+<link rel="stylesheet" href="resources/css/joinForm.css">
 <script>
 var siCheck=false; // studentId
 var pwCheck=false; // password
