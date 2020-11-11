@@ -1,6 +1,6 @@
 
 
-nav{
+#nav{
   width: 206px;
   height: calc(100vh - 37px);
   display: flex;
@@ -10,7 +10,7 @@ nav{
 }
 
 
-nav>ul{
+#nav>ul{
   padding: 9px 0 0 0;
   text-indent: 15px;
   height: 30px;

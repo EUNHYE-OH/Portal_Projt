@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="resources/css/reset.css">
+  <link rel="stylesheet" href="resources/css/student/st_header.css">
+<link rel="stylesheet" href="resources/css/student/st_nav.css">
+<link rel="stylesheet" href="resources/css/layout/layout.css">
     <link rel="stylesheet" href="resources/css/student/st_grade.css">
 </head>
 <body>
@@ -63,9 +66,9 @@
         </div>
         </div>
       <!--과목목록  수강신청내역이 나오도록하기! -->
-        <div>
+        <div id="subjectList">
             <img src="resources/image/hamberger.jpg" alt="" class="hamberger">
-            과목목록 [총 ?? 건]
+             과목목록 [총 ?? 건]
             <div>수강신청 내역 나오게 하기</div>
         </div>
     </div>

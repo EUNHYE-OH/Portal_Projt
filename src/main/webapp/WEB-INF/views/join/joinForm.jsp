@@ -5,7 +5,7 @@
 <title>Home</title>
 <script src="resources/jqLib/jquery-3.2.1.min.js"></script>
 <script src="resources/jqLib/joinCheck.js"></script>
-<link rel="stylesheet" href="resources/css/joinForm.css">
+<link rel="stylesheet" href="resources/css/join/joinForm.css">
 <script>
 var siCheck=false; // studentId
 var pwCheck=false; // password
@@ -122,9 +122,14 @@ $(function() {
 				</tr>
 				<tr height="45">
 					<td><span id="sp">성별</span>
-						<input type="radio" name="gender" value="male" id="gender"><span id="sp1">남</span>
-						<input type="radio" name="gender" value="female"><span id="sp1">여</span></td>
-				</tr><br>
+					<label id="sp1">남
+						<input type="radio" name="gender" value="male" id="gender">
+						</label>
+						<label id="sp1">여
+						<input type="radio" name="gender" value="female">
+						</label>
+						</td>
+				</tr>
 				<tr height="45">
 					<td>
 						<input type="submit" value="완료" id="sub">&nbsp;&nbsp;&nbsp; 

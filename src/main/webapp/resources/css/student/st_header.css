@@ -54,6 +54,7 @@ header{
 }
 
 #logout>span{
+  font-size:15px;
   line-height: 29px;
 }
 #logout> img{

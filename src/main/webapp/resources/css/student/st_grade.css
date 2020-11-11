@@ -29,20 +29,22 @@ body>span{
   height: 80vh;
   padding :10px;
   padding-bottom: 0px;
-  display: flex;
-  flex-wrap: wrap;
+  
+    display: flex;
 }
 #contents>div{
   font-weight: bold;
   font-size: 20px;
   margin-bottom: 30px;
+  display: flex;;
 }
 
 #contents>div:first-child{
-  width: 35vw;
+  width: 18vw;
   margin-right: 35px;
   display: flex;
   flex-direction: column;
+  flex:  0 1 50%;
 }
 #contents table{
   width: 35vw;
@@ -55,6 +57,12 @@ body>span{
 #contents>div:last-of-type{
   border: 1px solid black;
   width: 60vw;
+  flex:  0 1 50%;
+  
+}
+#contents>div:last-of-type>img{
+	width: 15px;
+	height: 15px;
 }
 
 table,

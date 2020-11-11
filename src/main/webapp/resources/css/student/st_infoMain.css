@@ -44,7 +44,7 @@
             border-collapse: collapse;
         }
         
-        table  td:nth-child(2n - 1){
+        table td:nth-child(2n - 1){
             text-align: right;
             padding-right: 5px;
         }
@@ -54,17 +54,17 @@
             height: 80%;
         }
         
-        nav{
+        #infoMainNav{}
             
-        }
-        nav>ul {
+        
+        #infoMainNav>#infoMainUl {
             display: flex;
             justify-content: flex-start;
         }
 
-        nav>ul>li {
+        #infoMainNav>#infoMainUl>.infoMainLi {
 
-            border: 1px solid gray;
+            border: 1px solid gray; 
             padding: 10px 40px;
             margin: 0 2px;
             border-radius: 10px;
@@ -72,6 +72,6 @@
             color: white;
         }
 
-        nav+div {
+        #infoMainNav+div {
             
         }

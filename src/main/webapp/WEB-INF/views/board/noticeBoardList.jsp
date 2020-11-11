@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>NoticeBoard List</title>
 <script src="resources/jqLib/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="resources/css/noticeBoardList.css">
+<link rel="stylesheet" href="resources/css/board/noticeBoardList.css">
 </head>
 <body>
 	<form acrtion="nblist" method="post">

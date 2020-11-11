@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Q&ABoard Detail</title>
 <script src="resources/jqLib/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="resources/css/qnaBoardDetail.css">
+<link rel="stylesheet" href="resources/css/board/qnaBoardDetail.css">
 </head>
 <body>
 	<form action="qbdetail" method="post">

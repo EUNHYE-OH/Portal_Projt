@@ -7,7 +7,10 @@
 <link rel="stylesheet" href="resources/css/home.css">
 </head>
 <body>
-	<form action="" method="get">
+<c:if test="${message !=null }">
+${message }
+</c:if>
+	<form action="login" method="post">
 		<header>
 			<img src="resources/image/main.png" width=100% height=30%>
 		</header>
@@ -16,14 +19,13 @@
 				<section>
 					<h2>로 그 인</h2>
 					<tr>
-						<td><input type="text" id="id" name="id" class="inputbox"
-							placeholder="학번 입력"></td>
+						<td><input type="text" id="studentid" name="studentid" class="inputbox"></td>
 						<td><input type="checkbox"><span>학번/교번 저장</span></td>
 						<br>
 					</tr>
 					<tr>
 						<td><input type="password" id="password" name="password"
-							class="inputbox" placeholder="비밀번호 입력"></td>
+							class="inputbox""></td>
 						<td><input type="submit" value="로그인" id="logbtn"></td>
 						<br>
 					</tr>

@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>NoticeBoard Detail</title>
 <script src="resources/jqLib/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="resources/css/noticeBoardDetail.css">
+<link rel="stylesheet" href="resources/css/board/noticeBoardDetail.css">
 </head>
 <body>
 	<form acrtion="nbdetail" method="post">

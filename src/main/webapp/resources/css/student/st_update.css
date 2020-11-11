@@ -15,7 +15,7 @@
             margin-right: 10px;
         }
 
-        div>div:nth-of-type(2) {
+        #form_wrap {
             /*form 정보*/
             border: 1px solid gray;
             margin-top: 10px;
@@ -36,7 +36,7 @@
             text-align: center;    
             
         }
-        #update{
+        #updateBtn{
             width: 100px;
             height: 25px;
             color: white;

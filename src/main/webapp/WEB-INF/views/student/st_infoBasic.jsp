@@ -5,6 +5,7 @@
 <head>
     <link rel="stylesheet" href="resources/css/reset.css">
     <link rel="stylesheet" href="resources/css/student/st_infoBasic.css">
+    
     <meta charset="UTF-8">
     <title>Document</title>
 </head>

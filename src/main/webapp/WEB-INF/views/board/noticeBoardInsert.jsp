@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>NoticeBoard NewInsert</title>
 <script src="resources/jqLib/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="resources/css/noticeBoardInsert.css">
+<link rel="stylesheet" href="resources/css/board/noticeBoardInsert.css">
 </head>
 <body>
 	<form acrtion="nbinsert" method="post">

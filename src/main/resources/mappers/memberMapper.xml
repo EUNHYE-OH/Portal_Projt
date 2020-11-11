@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.portal.memberMapper">
+	<select id="selectOne" resultType="vo.MemberVO">
+		select * from basicInfo where studentid = #{studentid}
+	</select>
+	
+	<update id="st_update">
+		update basicInfo set password = #{password}, phone = #{phone}, address=#{address}, email=#{email} where studentid = #{studentid} and name = #{name}
+	</update>
+	
+</mapper> 

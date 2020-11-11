@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.portal.classMapper">
+	<insert id="clInsert">
+		insert into class values(#{studentid},#{appYear},#{appSemester},#{subjectid})
+	</insert>
+	
+	
+ 	<!--<resultMap type="ClassVO" id="classMap">
+		<id column="studentid" property="studentid"/>
+		<result column="appYear" property="appYear"/>
+		<result column="appSemester" property="appSemester"/>
+		<result column="subjectid" property="subjectid"/>
+		
+		<collection javaType="vo.SubjectVO" property="vo.SubjectVO">
+			<id column="subjectid" property="subjectid"/>
+			<result column="subCredit" property="subCredit"/>
+			<result column="classifi" property="classifi"/>
+			<result column="professor" property="professor"/>
+		</collection>
+	</resultMap>  
+	
+		<select id="selectClass"  resultMap="classMap">
+		select * from class c JOIN subject s ON c.subjectid = s.subjectid where c.studentid = #{studentid}
+	</select> -->
+	
+	<select id="selectClass"  resultType="vo.ClassVO">
+		select * from class c JOIN subject s ON c.subjectid = s.subjectid where c.studentid = #{studentid}
+	</select>
+	
+</mapper>
