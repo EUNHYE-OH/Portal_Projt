@@ -10,11 +10,46 @@
 <link rel="stylesheet" href="resources/css/layout/layout.css">
     <link rel="stylesheet" href="resources/css/student/st_class.css">
 </head>
+<script>
+/*function submit(){
+	var formData = $('#classForm').serialize();
+	$.ajax({
+		type:'Get',
+		url:'st_class',
+		data:formData,
+		success:function(result){
+			$('#resultArea1').html(result);
+		},
+		error:function(){
+			alert('오류오류~~!~!');
+		}
+	});//ajax
+};//submit()*/
 
+/*function insert(){
+	
+	var formData = $('#classForm').serialize();
+	
+	$.ajax({
+		type:'get',
+		url:'st_class',
+		data : formData,
+		success:function(result){
+			open('st_class', "_blank",
+			"toolbar=no,menubar=yes,scrollbars=yes,resizeable=yes,width=400,height=300")
+		},
+		error:function(){
+			alert('다시 시도해주세요');
+		}
+	});
+
+};*/
+
+</script>
 
 <body>
    <span>학생메뉴>학생메뉴>수업수강>수강신청</span>
-      <form action="st_class" method="get">
+      <form action="st_class" method="get" id="classForm">
     <div id="info">
         <label for="year">학년도 <span>*</span> </label>
         <input type="number" name="appYear" value="2020" >
@@ -50,18 +85,20 @@
                   <td>선택</td>
               </tr>
                <c:forEach var="sbjList" items="${sbjList}" varStatus="status">
+      
               <tr>
                   <td>${status.count}</td>
                   <td>${sbjList.subjectid}</td>
                   <td>${sbjList.subCredit}</td>
                   <td>${sbjList.classifi}</td>
                   <td>${sbjList.professor}</td>
-                  <td><input type="checkbox" name="subjectid" id="checked" value="${sbjList.subjectid}"></td>
+                  <td><input type="checkbox" name="subjectids" id="chekced"  value="${sbjList.subjectid}"></td>
               </tr>
               </c:forEach>
           </table>
         </div>
    </form>
+   <div id="resultArea"></div>
 </body>
 
 </html>

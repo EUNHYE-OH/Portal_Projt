@@ -20,8 +20,12 @@ public class ClassServiceImple implements CService{
 	};//clInsert
 	
 	@Override
-	public ClassVO selectClass(ClassVO cvo) {
+	public List<ClassVO> selectClass(ClassVO cvo) {
 		return dao.selectClass(cvo);
 	}
 	
+	@Override
+	public List<ClassVO> classList(ClassVO cvo) {
+		return dao.classList(cvo);
+	}
 }

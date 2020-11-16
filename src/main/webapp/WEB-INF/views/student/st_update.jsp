@@ -11,29 +11,20 @@
   <link rel="stylesheet" href="resources/css/student/st_update.css">
   <link rel="stylesheet" href="resources/css/layout/layout.css">
   <script src="resources/jqLib/jquery-3.2.1.min.js"></script>
-   <script>
+
+   <c:if test="${message != null }">
+   	<script>
+   		alert('${message}');
+   	</script>
+   </c:if>
+   
    <!-- $(function() {
 		 $('.dis').attr('disabled', 'disabled');
 		 $('#search').click(function(){
 			$('.dis').removeAttr('disabled'); 
 		 });
-    }); 
-   -->
-   
-   function update(){
-	   $.ajax({
-		   type:'post',
-		   url:'st_update',
-		   success:function(data){
-			   alert('수정되었습니다.');
-		   },
-		   error:function(){
-			   alert('다시 시도해주세요.');
-		   }
-	   });//ajax
-   }//update
-    
-    </script>
+    });  -->
+
 </head>
 
 <body>
@@ -65,7 +56,7 @@
                     <tr>
                         <td>비밀번호</td>
                         <td>
-                            <input type="text" name="password" id="password" value="${logPW }">
+                            <input type="password" name="password" id="password">
                         </td>
                     </tr>
                     <tr>

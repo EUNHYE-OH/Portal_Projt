@@ -8,5 +8,8 @@ public interface CService {
 
 	int clInsert(ClassVO cvo);
 	
-	ClassVO selectClass(ClassVO cvo);
+	List<ClassVO> selectClass(ClassVO cvo);
+	
+	List<ClassVO> classList(ClassVO cvo);
+	
 }

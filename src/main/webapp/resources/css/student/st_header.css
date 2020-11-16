@@ -61,4 +61,6 @@ header{
   padding-top: 4px;
   margin: 1px 0 4px 0;
   float: right;
+  width: 23px;
+  border: none;
 }

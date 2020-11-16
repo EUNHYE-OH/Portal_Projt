@@ -5,11 +5,14 @@
 <title>Home</title>
 <script src="resources/jqLib/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="resources/css/home.css">
+
+<c:if test="${message != null }">
+	<script>
+		alert('${message}');
+	</script>
+</c:if>
 </head>
 <body>
-<c:if test="${message !=null }">
-${message }
-</c:if>
 	<form action="login" method="post">
 		<header>
 			<img src="resources/image/main.png" width=100% height=30%>

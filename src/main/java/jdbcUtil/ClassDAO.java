@@ -19,7 +19,11 @@ public class ClassDAO{
 		return sqlSession.insert(NS+"clInsert",cvo);
 	}//clInsert
 	
-	public ClassVO selectClass(ClassVO cvo) {
-		return sqlSession.selectOne(NS+"selectClass", cvo);
-	}
+	public List<ClassVO> selectClass(ClassVO cvo) {
+		return sqlSession.selectList(NS+"selectClass", cvo);
+	}//selectClass
+	
+	public List<ClassVO> classList(ClassVO cvo){
+		return sqlSession.selectList(NS+"classList",cvo);
+	}//classList
 }

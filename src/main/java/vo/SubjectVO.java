@@ -1,11 +1,14 @@
 package vo;
 
+import java.util.Arrays;
+
 public class SubjectVO {
 
 	private String subjectid;
 	private int subCredit;
 	private String classifi;
 	private String professor;
+	
 	
 	public String getSubjectid() {
 		return subjectid;
@@ -31,13 +34,5 @@ public class SubjectVO {
 	public void setProfessor(String professor) {
 		this.professor = professor;
 	}
-	@Override
-	public String toString() {
-		return "SubjectVO [subjectid=" + subjectid + ", subCredit=" + subCredit + ", classifi=" + classifi
-				+ ", professor=" + professor + "]";
-	}
-	
-	
-	
 	
 }

@@ -13,7 +13,7 @@
 
 
 <body>
-   <span>학생메뉴>학생메뉴>수업수강>수강신청</span>
+   <span>학생메뉴>학생메뉴>수업수강>수강신청내역!!!</span>
       <form action="st_class" method="get">
     <div id="info">
         <label for="year">학년도 <span>*</span> </label>

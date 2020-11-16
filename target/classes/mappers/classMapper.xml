@@ -3,9 +3,12 @@
 
 <mapper namespace="com.portal.classMapper">
 	<insert id="clInsert">
-		insert into class values(#{studentid},#{appYear},#{appSemester},#{subjectid})
+		insert all 
+   <foreach collection="subjectids" item="it" >
+   	into class values(#{studentid},#{appYear},#{appSemester},#{it})
+   </foreach>
+	select * from dual
 	</insert>
-	
 	
  	<!--<resultMap type="ClassVO" id="classMap">
 		<id column="studentid" property="studentid"/>
@@ -25,8 +28,15 @@
 		select * from class c JOIN subject s ON c.subjectid = s.subjectid where c.studentid = #{studentid}
 	</select> -->
 	
+	<!-- 수강신청 저장하고 list보여줄때 : 사용 ㄴㄴ
 	<select id="selectClass"  resultType="vo.ClassVO">
 		select * from class c JOIN subject s ON c.subjectid = s.subjectid where c.studentid = #{studentid}
+	</select>-->
+	
+	<!-- st_classList 에서 조건(학년도, 학기, 학번, 이름으로 조회하면 조건에 맞는 수강list -->
+	<select id="classList" resultType="vo.ClassVO">
+		select * from class c Join subject s ON c.subjectid = s.subjectid where c.appYear = #{appYear} and c.appSemester = #{appSemester} and c.studentid = #{studentid}
 	</select>
+	
 	
 </mapper>

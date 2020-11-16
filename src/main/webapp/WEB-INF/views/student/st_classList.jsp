@@ -8,33 +8,35 @@
   <title>Document</title>
   <link rel="stylesheet" href="resources/css/reset.css">
   <link rel="stylesheet" href="resources/css/student/st_header.css">
-<link rel="stylesheet" href="resources/css/student/st_nav.css">
-<link rel="stylesheet" href="resources/css/layout/layout.css">
+	<link rel="stylesheet" href="resources/css/student/st_nav.css">
+	<link rel="stylesheet" href="resources/css/layout/layout.css">
     <link rel="stylesheet" href="resources/css/student/st_classList.css">
+<script src="resources/jqLib/jquery-3.2.1.min.js"></script>
+
+
+<c:if test="${message != null }">
+	<script>
+		alert('${message}');
+	</script>
+</c:if>
 </head>
-<script>
-	$(function(){
-		$('#search').click(function(){
-			
-		});//search_click
-	});//ready
-</script>
 <body>
-  <span>학생메뉴>학생메뉴>수업수강>수강내역신청 (UCR0123Q)</span>
+  <span>학생메뉴>학생메뉴>수업수강>수강내역 (UCR0123Q)</span>
     <div id="info">
-      <form action="">
+      <form action="st_classList">
         <label for="year">학년도 <span>*</span> </label>
-        <input type="number" name="year" id="year" value="${y}">
+        <input type="number" name="appYear" id="appYear" value="${y}">
       <label for="semester">학기 <span>*</span> </label>
-      <select id="semester" name="semester">
+      <select id="appSemester" name="appSemester">
         <option value="1semester">1학기</option>
         <option value="summer_va">하계계절학기</option>
         <option value="2semester">2학기</option>
         <option value="winter_va">동계계절학기</option>
     </select>
-    학번/성명 <input type="text" name="studentid" value="${logID}" readonly="readonly">
+    학번/성명 <input type="text" name="studentid" value="${logID }" readonly="readonly">
     <input type="text" name="name" value="${logName}" readonly="readonly">
     <input type="image" src="resources/image/SearchButton.jpg" id="search">
+    
   </form>
   </div>
     <div id="contents">
@@ -51,7 +53,8 @@
                     <td>이수구분</td>
                     <td>담당교수</td>
                 </tr>
-                <c:if test="${clList != null }">
+                <c:set var = "sum" value="0"/>
+                <c:forEach var ="clList" items="${clList}" varStatus="status">
                 <tr>
                     <td>${status.count}</td>
                     <td>${clList.subjectid}</td>
@@ -59,12 +62,13 @@
                     <td>${clList.classifi}</td>
                     <td>${clList.professor}</td>
                 </tr>
-                </c:if>
+                <c:set var="sum" value="${sum + clList.subCredit}"/>
+                </c:forEach>
                 <!--이것만 밑으로 어떻게 보낼까?-->
                 <tr>
                     <td>합계</td>
                     <td></td>
-                    <td></td>
+                    <td><c:out value="${sum}"/></td>
                     <td></td>
                     <td></td>
                 </tr>

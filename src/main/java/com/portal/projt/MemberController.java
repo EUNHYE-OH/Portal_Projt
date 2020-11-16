@@ -3,7 +3,9 @@ package com.portal.projt;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +64,19 @@ public class MemberController {
 
 		return mv;
 	}// login
+	
+	@RequestMapping(value = "/logout")
+	public ModelAndView logout(ModelAndView mv, HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if((session != null) && (session.getAttribute("logID"))!=null) {
+			session.invalidate();
+			mv.setViewName("redirect:home");
+		}else {
+			mv.addObject("message","서버 에러!!");
+		}
+		return mv;
+	}
+	
 
 	@RequestMapping(value = "/st_updatef")
 	public ModelAndView st_updatef(ModelAndView mv) {
@@ -72,13 +87,13 @@ public class MemberController {
 
 	@RequestMapping(value = "/st_update")
 	public ModelAndView st_update(ModelAndView mv, MemberVO vo) {
+		vo.setPassword(passwordEncoder.encode(vo.getPassword()));
 		if (service.st_update(vo) > 0) {
 			mv.addObject("message", "수정 완료되었습니다.");
-			mv.setViewName("layout/layout");
-		} else {
+		}else {
 			mv.addObject("message", "다시 시도해주세요.");
-			mv.setViewName("layout/layout");
 		}
+		mv.setViewName("redirect:st_updatef");
 		return mv;
 	}// st_update
 
@@ -92,18 +107,16 @@ public class MemberController {
 	public ModelAndView st_classf(ModelAndView mv, SubjectVO vo) {
 		List<SubjectVO> sbjList = sbjService.sbjList(vo);
 		mv.addObject("sbjList", sbjList);
-
 		mv.setViewName("student/st_class");
 		return mv;
 	}// st_classf
 
 	@RequestMapping(value = "/st_class")
 	public ModelAndView st_class(ModelAndView mv, ClassVO cvo) {
-		System.out.println(cvo);
+		
 		int cnt = cService.clInsert(cvo);
 		if (cnt > 0) {
-			System.out.println("몇개" + cnt);
-			ClassVO clList = cService.selectClass(cvo);
+			List<ClassVO> clList = cService.classList(cvo);
 			mv.addObject("clList", clList);
 		} else {
 			System.out.println("실패");
@@ -112,11 +125,24 @@ public class MemberController {
 		return mv;
 	}// st_classf
 
-	@RequestMapping(value = "/st_classList")
-	public ModelAndView st_classList(ModelAndView mv) {
+	@RequestMapping(value = "/st_classListf")
+	public ModelAndView st_classListf(ModelAndView mv, ClassVO cvo) {
 		int y = Calendar.getInstance().get(Calendar.YEAR);
 		mv.addObject("y", y);
 		mv.setViewName("student/st_classList");
+		return mv;
+	}// st_classList
+	
+	@RequestMapping(value = "/st_classList")
+	public ModelAndView st_classList(ModelAndView mv, ClassVO cvo) {
+		List<ClassVO> clList = cService.classList(cvo);
+		if(clList.size() > 0) {
+			mv.addObject("clList",clList);
+			mv.setViewName("student/st_classList");
+		}else {
+			mv.setViewName("student/st_classList");
+			mv.addObject("message","수강신청 내역이 없습니다.");
+		}
 		return mv;
 	}// st_classList
 

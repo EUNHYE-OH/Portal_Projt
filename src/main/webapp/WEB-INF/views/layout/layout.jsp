@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="resources/css/student/st_nav.css">
 <link rel="stylesheet" href="resources/css/layout/layout.css">
 <script src="resources/jqLib/jquery-3.2.1.min.js"></script>
+
 </head>
 <body>
 	<header id="header">
@@ -26,7 +27,7 @@
 				<img src="resources/image/clock.jpg" alt="타이머"> <span>timer</span>
 			</div>
 			<div id="logout">
-				<span>학부생 ${logName}</span> <img src="resources/image/logout_icon.gif"
+				<span>학부생 ${logName}</span> <img id="logout" src="resources/image/logout_icon.gif"
 					alt="나가기">
 			</div>
 		</div>
@@ -101,7 +102,7 @@
 		$('#classList').click(function() {
 			$.ajax({
 				type : 'post',
-				url : 'st_classList',
+				url : 'st_classListf',
 				success : function(result) {
 					$('#article').html(result);
 				},
@@ -136,6 +137,19 @@
 			}); //ajax
 		});//----------------------------------------------st_grade
 
+		$('#logout').click(function(){
+			$.ajax({
+				type:'Get',
+				url : 'logout',
+				success:function(result){
+					location.replace('home');
+					alert('정상적으로 로그아웃 되었습니다.');
+				},
+				error:function(){
+					alert('서버에러(logout)');
+				}
+			});//ajax
+		});//logout
 		
 	});//---------------------ready
 
