@@ -32,6 +32,7 @@ header{
 
 #timer{
   margin-top: 5px;
+  font-size:13px;
 }
 #timer>span{
   margin: 0 48px 0 5px;
@@ -50,11 +51,11 @@ header{
   line-height: 20px;
   border: 1px solid gray;
   text-align: center;
+  font-size:13px;
   font-weight: bold;
 }
 
 #logout>span{
-  font-size:15px;
   line-height: 29px;
 }
 #logout> img{

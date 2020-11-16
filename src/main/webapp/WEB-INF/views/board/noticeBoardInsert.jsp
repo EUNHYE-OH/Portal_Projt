@@ -1,80 +1,81 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html lang="kn">
 <head>
+<link rel="stylesheet" href="resources/css/reset.css">
+<link rel="stylesheet" href="resources/css/board/nbinsert.css">
 <meta charset="UTF-8">
-<title>NoticeBoard NewInsert</title>
-<script src="resources/jqLib/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="resources/css/board/noticeBoardInsert.css">
+<title>수정!</title> 
+<style>
+</style>
 </head>
+
 <body>
-	<form acrtion="nbinsert" method="post">
+	<div>
 		<header>
-			<h1>공 지 사 항</h1>
+			<div>
+				<img src="resources/image/hoseologo2.png">
+			</div>
 		</header>
-		<div id="div1">
-		<form>
-			<table>
-				<tr height="40">
-					<td bgcolor="#566881" style="border-radius: 5px; text-align: center; 
-					color: white; border: 1px solid #000033; width: 70px;">제 목</td>
-					<td><input type="text" name="title" id="title"></td>
-				</tr>
-				<tr height="40">
-					<td bgcolor="#566881" style="border-radius: 5px; text-align: center; 
-					color: white; border: 1px solid #000033; width: 70px;">내 용</td>
-					<td><textarea rows="25" cols="60" name="contents" id="contents"
-						 style="resize:none; font-size:20px; overflow-y:scroll;"></textarea></td>
-				</tr>
-				<tr height="40">
-					<td bgcolor="#566881" style="border-radius: 5px; text-align: center; 
-					color: white; border: 1px solid #000033; width: 70px;">첨부파일</td>
-					<td><img src="" class="attachment">
-					<input type="file" name="attfile" id="attfile"><br>
-					<script>
-					
-					$('#attfile').change(function(){
-						if(this.files && this.files[0]) {
-							var reader = new FileReader;
-					 			reader.onload = function(e) {
-				 				$(".attachment").attr("src", e.target.result)
-				 					.width(70).height(50); 
-				 				}
-				 				reader.readAsDataURL(this.files[0]);
-				 		} 
-					});
-					
-					</script>
-					</td></tr>
-				<tr height="40"><td></td>
-					<td>
-						<input type="submit" value="등록" id="sub">&nbsp;&nbsp;&nbsp; 
-						<input type="reset" value="취소" id="res"></td>
-				</tr>
-			</table>
+		<main> 
+		<div id="searchDiv">
+
+			<span>공지사항</span>
+
+		</div>
+		<div id="tableDiv">
+			<form action="nbinsert">
+				<table>
+					<tr>
+						<td>제 목</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="text" name="title" id="titleInput">
+						</td>
+					</tr>
+					<tr>
+						<td>내 용</td>
+					</tr>
+					<tr>
+						<td id="contents">
+							학번 : <input type="text" name="studentId" > 
+							<textarea rows="40rem" cols="140rem" name="contents"></textarea>
+						</td>
+					</tr>
+				</table>
+				<input type="submit" value="작성">
 			</form>
 		</div>
+		<div id="directionDiv">
+			<button onclick="location.href='nblist'">목록</button>
+
+
+		</div>
+
+		</main>
 		<footer>
+			<img src="resources/image/hoseologo1.png" width="140" height="50">
+
 			<div>
 				<ul>
-					<li><a href="#" class="a1">개인정보처리방침</a></li>
-					<li><a href="#">이메일무단수집거부</a></li>
+					<li><span>은혜캠퍼스</span> 충청남도 아산시 배방읍 호서로79번길20 (우)31499 TEL:041-540-5114</li>
+					<li><span>승빈캠퍼스</span> 충청남도 천안시 동남구 호서대길12 (우)31066 TEL:041-560-8114</li>
+					<li><span>민혁캠퍼스</span> 충청남도 천안시 배방읍 호서대길12 (우)31499 TEL:041-560-8115</li>
+				</ul>
+				<span>COPYRIGHT(C) 2011 HOSEO UNIVERSITY. ALL RIGHT RESERVED</span>
+			</div>
+
+			<div>
+				<ul>
+					<li><a href="#" class="a1">개인정보처리방침</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="#">교내전화번호</a></li>
+					<li><a href="#">이메일무단수집거부</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">학내백신다운로드</a></li>
 					<li><a href="#">오시는길</a></li>
-					<li><a href="#">교내전화번호</a></li>
-					<li><a href="#">학내백신다운로드</a></li>
-					<ul>
-						<ul>
-							<li>은혜캠퍼스 충청남도 아산시 배방읍 호서로79번길20 (우)31499 TEL:041-540-5114</li>
-							<li>승빈캠퍼스 충청남도 천안시 동남구 호서대길12 (우)31066 TEL:041-560-8114</li>
-							<li>민혁캠퍼스 충청남도 천안시 배방읍 호서대길12 (우)31499 TEL:041-560-8115</li>
-							<li>COPYRIGHT(C) 2011 HOSEO UNIVERSITY. ALL RIGHT RESERVED</li>
-						</ul>
-						<img src="resources/image/hoseologo1.png" width="140" height="50">
-					</ul>
 				</ul>
 			</div>
 		</footer>
-	</form>
+	</div>
 </body>
+
 </html>

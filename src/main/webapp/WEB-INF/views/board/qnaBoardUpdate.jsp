@@ -4,7 +4,7 @@
 <html lang="kn">
 <head>
 <link rel="stylesheet" href="resources/css/reset.css">
-<link rel="stylesheet" href="resources/css/board/qbinsert.css">
+<link rel="stylesheet" href="resources/css/board/qbupdatef.css">
 <meta charset="UTF-8">
 <title>수정!</title> 
 <style>
@@ -25,14 +25,16 @@
 
 		</div>
 		<div id="tableDiv">
-			<form action="qbinsert">
+			<form action="qbupdate">
+				<input type="hidden" value="${Detail.seq}" name="seq">
 				<table>
 					<tr>
 						<td>제 목</td>
+
 					</tr>
 					<tr>
 						<td>
-							<input type="text" name="title" id="titleInput">
+							<input type="text" value="${Detail.title}" name="title" id="titleInput">
 						</td>
 					</tr>
 					<tr>
@@ -40,12 +42,13 @@
 					</tr>
 					<tr>
 						<td id="contents">
-							학번 : <input type="text" name="studentId" > 
-							<textarea rows="40rem" cols="140rem" name="contents"></textarea>
+							<span>글쓴이:${Detail.studentId} 작성일: ${Detail.regDate}</span>
+
+							<textarea rows="40rem" cols="140rem" name="contents">${Detail.contents}</textarea>
 						</td>
 					</tr>
 				</table>
-				<input type="submit" value="작성">
+				<input type="submit" value="수정">
 			</form>
 		</div>
 		<div id="directionDiv">

@@ -16,7 +16,7 @@
 <body>
 	<header id="header">
 		<div id="logo_wrap">
-			<div id="logo">
+			<div id="logo" class="cursor">
 				<img src="resources/image/logo.jpg" alt="통합정보시스템">
 			</div>
 			<img id="globalm" src="resources/image/globalm_btn08on.jpg"
@@ -27,7 +27,7 @@
 				<img src="resources/image/clock.jpg" alt="타이머"> <span>timer</span>
 			</div>
 			<div id="logout">
-				<span>학부생 ${logName}</span> <img id="logout" src="resources/image/logout_icon.gif"
+				<span>학부생 ${logName}</span> <img id="logout" class="cursor" src="resources/image/logout_icon.gif"
 					alt="나가기">
 			</div>
 		</div>
@@ -60,6 +60,15 @@
 	</section>
 </body>
 <script>
+
+//-------------------------------- #logo click > reload() -----------------------------
+
+$('#logo').click(function(){
+	location.reload();
+});//logo
+
+//-------------------------------- nav click > 화면 보여주기 -----------------------------
+
 	$(function() {
 		$('#update').click(function() {
 			$.ajax({
@@ -72,7 +81,7 @@
 					alert('서버에러(st_update)');
 				}
 			}); //ajax
-		});//----------------------------------------------update
+		});//update
 		
 		$('#infomation').click(function() {
 			$.ajax({
@@ -85,7 +94,7 @@
 					alert('서버에러(st_infoMain)');
 				}
 			}); //ajax
-		});//----------------------------------------------main
+		});//main
 
 		$('#class').click(function() {
 			$.ajax({
@@ -98,7 +107,7 @@
 					alert('서버에러(st_class)');
 				}
 			}); //ajax
-		});//----------------------------------------------st_classList
+		});//st_classList
 		$('#classList').click(function() {
 			$.ajax({
 				type : 'post',
@@ -110,7 +119,7 @@
 					alert('서버에러(st_classList)');
 				}
 			}); //ajax
-		});//----------------------------------------------st_classList
+		});//st_classList
 
 		$('#changeReq').click(function() {
 			$.ajax({
@@ -123,7 +132,7 @@
 					alert('서버에러(st_changeReq)');
 				}
 			}); //ajax
-		});//----------------------------------------------changeReq
+		});//changeReq
 		$('#grade').click(function() {
 			$.ajax({
 				type : 'Get',
@@ -135,7 +144,7 @@
 					alert('서버에러(st_grade)');
 				}
 			}); //ajax
-		});//----------------------------------------------st_grade
+		});//st_grade
 
 		$('#logout').click(function(){
 			$.ajax({
@@ -151,7 +160,9 @@
 			});//ajax
 		});//logout
 		
-	});//---------------------ready
+	});//ready
+
+//-------------------------------- hover_css -----------------------------
 
 	$('.hover_b').hover(function() {
 		$(this).css({
@@ -164,5 +175,15 @@
 			cursor : "default"
 		});//css
 	});//hover_b
+	
+	$('.cursor').hover(function(){
+		$(this).css({
+			cursor : "pointer"
+		});//css
+	},function(){
+		$(this).css({
+			cursor : "default"
+		});//css
+	});//cursor
 </script>
 </html>

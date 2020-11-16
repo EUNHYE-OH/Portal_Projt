@@ -41,7 +41,7 @@
 			<div id="div3">
 				<ul>
 					<li><a href="nblist">공지사항</a></li>
-					<li><a href="qblist">문의사항</a></li>
+					<li><a href="pqblist">문의사항</a></li>
 					<ul>
 						<li><a href="nbdetail">[교수학습센터] 2020-2학기 학습법워크숍·학습성찰일지워크숍 추가..</a><span>2020-10-27</span></li>
 						<li><a href="nbdetail">[국제협력원] 코로나-19확산에 따른 해외연수 미실시 안내</a><span>2020-10-26</span></li>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.portal.QnaMapper">
+
+<sql id="search">
+  	<choose>
+  		<when test="searchType=='t'.toString()">
+  			and title like CONCAT(CONCAT('%',#{keyword}),'%'))
+  		</when>
+  		<when test="searchType=='c'.toString()">
+  			and contents like CONCAT(CONCAT('%',#{keyword}),'%'))
+  		</when>
+  		<when test="searchType=='w'.toString()">
+  			and studentId like CONCAT(CONCAT('%',#{keyword}),'%'))
+  		</when>
+  		<otherwise> ) </otherwise>
+  	</choose>
+</sql>
+
+<select id="clist" resultType="vo.CommentVO">
+	select * from boardQnaComment where seq = #{seq} order by root
+</select>
+
+<select id="cqbInsert" resultType="int">
+	insert into boardQnaComment values(
+	#{seq}, (select nvl(max(root), 0)+1 from boardQnaComment where seq = #{seq}), #{studentId}, sysdate, #{contents})
+</select>
+
+<select id="cqbDelete" resultType="int">
+	delete boardQnaComment where seq = #{seq} and root = #{root}
+</select>
+
+<select id="searchRowCount" resultType="int">
+  <![CDATA[
+  	select count(*) from boardQna where ( seq>0 ]]> 
+  	<include refid="search"></include>
+</select>	
+
+  <select id="searchList" resultType="vo.QnaVO">
+  <![CDATA[
+  	select * from 
+	  (select b.* , ROW_NUMBER() OVER(order by seq desc) rnum from boardQna b
+	   where seq>0 ]]>  
+	<include refid="search"></include>  
+	   where rnum between #{sno} and #{eno}	 
+</select>
+
+<select id="totalRowCount" resultType="int">
+	select count(*) from boardQna
+</select>
+
+<select id="pageList" resultType="vo.QnaVO">
+	select * from  
+	(select b.* , ROW_NUMBER() OVER(order by seq desc) rnum from boardQna b)  
+	where rnum between #{sno} and #{eno}
+</select>
+
+<select id="selectList" resultType="vo.QnaVO" >
+	select * from boardQna order by seq desc
+</select>
+
+<select id="selectOne" resultType="vo.QnaVO">
+	select * from boardQna where seq=#{seq}
+</select>
+
+<insert id="qbInsert">
+	insert into boardQna values
+	 ((select nvl(max(seq), 0)+1 from boardQna),#{title},#{contents},
+	 sysdate,0,#{studentId})
+</insert>
+
+  <update id="qbUpdate">
+	update boardQna set title=#{title}, contents=#{contents} where seq=#{seq}
+</update>
+
+<delete id="qbDelete">
+	delete from boardQna where seq=#{seq}
+</delete>
+
+<update id="countUp">
+	update boardQna set count=count+1 where seq=#{seq}
+</update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
