@@ -1,6 +1,5 @@
 package vo;
 
-import java.util.Arrays;
 
 public class SubjectVO {
 
@@ -8,8 +7,6 @@ public class SubjectVO {
 	private int subCredit;
 	private String classifi;
 	private String professor;
-	
-	
 	public String getSubjectid() {
 		return subjectid;
 	}
@@ -34,5 +31,7 @@ public class SubjectVO {
 	public void setProfessor(String professor) {
 		this.professor = professor;
 	}
+	
+	
 	
 }

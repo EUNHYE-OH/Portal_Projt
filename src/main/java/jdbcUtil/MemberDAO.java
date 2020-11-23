@@ -27,4 +27,8 @@ public class MemberDAO {
 	public int st_update(MemberVO vo) {
 		return sqlSession.update(NS + "st_update", vo);
 	}//st_update
+	
+	public List<MemberVO> selectList(){
+		return sqlSession.selectList(NS+"selectList");
+	}//selectList
 }//class

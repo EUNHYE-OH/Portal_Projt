@@ -34,14 +34,22 @@ header{
   margin-top: 5px;
   font-size:13px;
 }
-#timer>span{
-  margin: 0 48px 0 5px;
+
+
+#timer>img{
+  margin-top: 4px;
+}
+
+#counter{
+  margin: 0 9px 0 5px;
   font-weight: bold;
   line-height: 29px;
 }
 
-#timer>img{
-  margin-top: 4px;
+
+#counter+input{
+	margin-right:33px;
+    font-size: 11px;
 }
 
 #logout{

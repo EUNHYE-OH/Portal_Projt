@@ -1,15 +1,14 @@
 package com.portal.projt;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,8 +41,8 @@ public class MemberController {
 		if (id.length() > 0 && password.length() > 0) {
 			vo = service.selectOne(vo);
 			if (vo == null) {
-				mv.addObject("message", "등록되지 않은 아이디입니다.");
 				mv.setViewName("home");
+				mv.addObject("message", "등록되지 않은 아이디입니다.");
 			} else {
 				if(passwordEncoder.matches(password, vo.getPassword())) {
 					HttpSession session = request.getSession();
@@ -53,15 +52,14 @@ public class MemberController {
 					if ("admin".equals(id)) mv.setViewName("manager/mag_layout");
 					else mv.setViewName("layout/layout");
 				} else {
-					mv.addObject("message", "등록되지 않은 비밀번호입니다.");
 					mv.setViewName("home");
+					mv.addObject("message", "등록되지 않은 비밀번호입니다.");
 				} // Password 비교
 			} // selectOne 성공여부
 		} else { // 입력값 check
-			mv.addObject("message", "아이디/비밀번호를 입력해주세요.");
 			mv.setViewName("home");
+			mv.addObject("message", "아이디/비밀번호를 입력해주세요.");
 		}
-
 		return mv;
 	}// login
 	
@@ -72,7 +70,7 @@ public class MemberController {
 			session.invalidate();
 			mv.setViewName("redirect:home");
 		}else {
-			mv.addObject("message","서버 에러!!");
+			mv.addObject("message","서버 에러");
 		}
 		return mv;
 	}
@@ -80,7 +78,6 @@ public class MemberController {
 
 	@RequestMapping(value = "/st_updatef")
 	public ModelAndView st_updatef(ModelAndView mv) {
-
 		mv.setViewName("student/st_update");
 		return mv;
 	}// st_updatef
@@ -105,6 +102,8 @@ public class MemberController {
 
 	@RequestMapping(value = "/st_classf")
 	public ModelAndView st_classf(ModelAndView mv, SubjectVO vo) {
+		int y = Calendar.getInstance().get(Calendar.YEAR);
+		mv.addObject("y", y);
 		List<SubjectVO> sbjList = sbjService.sbjList(vo);
 		mv.addObject("sbjList", sbjList);
 		mv.setViewName("student/st_class");
@@ -112,18 +111,29 @@ public class MemberController {
 	}// st_classf
 
 	@RequestMapping(value = "/st_class")
-	public ModelAndView st_class(ModelAndView mv, ClassVO cvo) {
-		
-		int cnt = cService.clInsert(cvo);
-		if (cnt > 0) {
-			List<ClassVO> clList = cService.classList(cvo);
-			mv.addObject("clList", clList);
-		} else {
-			System.out.println("실패");
+	public ModelAndView st_class(ModelAndView mv, ClassVO cvo) throws SQLIntegrityConstraintViolationException{
+		int y = Calendar.getInstance().get(Calendar.YEAR);
+		mv.addObject("y", y);
+		try {
+			if(cvo.getSubjectids()!= null && cvo.getSubjectids().length>0) {
+				if (cService.clInsert(cvo) > 0) {
+					List<ClassVO> clList = cService.classList(cvo);
+					mv.addObject("clList", clList);
+					mv.setViewName("student/st_classReq");
+				} 
+				}else {
+					mv.addObject("fCode","F");
+					mv.addObject("message","선택한 과목이 없습니다.");
+					mv.setViewName("student/doFinish");
+				}
+		} catch (Exception e) {
+			System.out.println("에러" + e.toString());
+			mv.addObject("fCode","F");
+			mv.addObject("message","이미 선택한 과목이 있습니다.");
+			mv.setViewName("student/doFinish");
 		}
-		mv.setViewName("student/st_classList");
 		return mv;
-	}// st_classf
+	}// st_class
 
 	@RequestMapping(value = "/st_classListf")
 	public ModelAndView st_classListf(ModelAndView mv, ClassVO cvo) {
@@ -135,16 +145,34 @@ public class MemberController {
 	
 	@RequestMapping(value = "/st_classList")
 	public ModelAndView st_classList(ModelAndView mv, ClassVO cvo) {
+		int y = Calendar.getInstance().get(Calendar.YEAR);
+		mv.addObject("y", y);
 		List<ClassVO> clList = cService.classList(cvo);
+		System.out.println(clList);
 		if(clList.size() > 0) {
 			mv.addObject("clList",clList);
 			mv.setViewName("student/st_classList");
 		}else {
-			mv.setViewName("student/st_classList");
+			mv.addObject("fCode","F");
 			mv.addObject("message","수강신청 내역이 없습니다.");
+			mv.setViewName("student/doFinish");
 		}
 		return mv;
 	}// st_classList
+	
+	@RequestMapping(value = "/st_classDel")
+	public ModelAndView st_classDel(ModelAndView mv, ClassVO cvo) {
+		int cnt = cService.deleteClass(cvo);
+		if(cnt>0) {
+			mv.addObject("message","해당 강의가 삭제되었습니다.");
+			mv.addObject("fCode","S");
+		}else {
+			System.out.println("nono" + cnt);
+			mv.addObject("fCode","F");
+		}
+		mv.setViewName("student/doFinish");
+		return mv;
+	}// st_classDel
 
 	@RequestMapping(value = "/st_infoMain")
 	public ModelAndView st_infoMain(ModelAndView mv) {

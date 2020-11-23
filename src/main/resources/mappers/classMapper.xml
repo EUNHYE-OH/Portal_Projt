@@ -2,13 +2,40 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.portal.classMapper">
+
 	<insert id="clInsert">
 		insert all 
-   <foreach collection="subjectids" item="it" >
-   	into class values(#{studentid},#{appYear},#{appSemester},#{it})
-   </foreach>
-	select * from dual
+		   <foreach collection="subjectids" item="it" >
+		   		into class values(#{studentid},#{appYear},#{appSemester},#{it})
+		   </foreach>
+		select * from dual
 	</insert>
+
+	<!-- <insert id="clInsert">
+		insert all
+		<foreach collection="subjectids" item="it">
+			into class values ((select nvl(max(seq),0)+1 from class),#{studentid},#{appYear},#{appSemester},#{it})
+		</foreach>
+		select * from dual
+	</insert> -->
+	
+	<!-- <insert id="clInsert">
+		insert all
+		<foreach collection="subjectids" item="it">
+			into class values ((select nvl(max(seq),0)+1 from class),#{studentid},#{appYear},#{appSemester},#{it})
+		</foreach> 
+		select * from dual where not exists(subjectid = #{it})
+	</insert>-->
+	
+	<!--<update id="clInsert">
+		insert into class (seq, studentid, appYear, appSemester, subjectids)
+		select seq.nextval as clSeq, T.*
+		from(
+			<foreach collection="list">
+			
+			</foreach>
+		)
+	</update>-->
 	
  	<!--<resultMap type="ClassVO" id="classMap">
 		<id column="studentid" property="studentid"/>
@@ -37,6 +64,17 @@
 	<select id="classList" resultType="vo.ClassVO">
 		select * from class c Join subject s ON c.subjectid = s.subjectid where c.appYear = #{appYear} and c.appSemester = #{appSemester} and c.studentid = #{studentid}
 	</select>
-	
+
+  	<delete id="deleteClass">
+		delete from class where subjectid in
+		   <foreach collection="subjectids" item="it" open="(" close=")" separator=",">
+		   	 #{it}
+		   </foreach>
+	</delete> 
+
+
+	<!--<delete id="deleteClass">
+		delete from class where subjectid = #{subjectids}
+	</delete> -->
 	
 </mapper>

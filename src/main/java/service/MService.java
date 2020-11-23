@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import vo.MemberVO;
 
 public interface MService {
@@ -9,4 +11,6 @@ public interface MService {
 	MemberVO selectOne(MemberVO vo);
 	
 	int st_update(MemberVO vo);
+	
+	List<MemberVO> selectList();
 }

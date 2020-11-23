@@ -28,4 +28,9 @@ public class MemberServiceImple implements MService{
 	public int st_update(MemberVO vo) {
 		return dao.st_update(vo);
 	}//st_update
+	
+	@Override
+	public List<MemberVO> selectList() {
+		return dao.selectList();
+	}//selectList
 }

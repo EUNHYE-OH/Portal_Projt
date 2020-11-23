@@ -9,52 +9,34 @@
   <link rel="stylesheet" href="resources/css/reset.css">
 <link rel="stylesheet" href="resources/css/layout/layout.css">
     <link rel="stylesheet" href="resources/css/student/st_class.css">
-</head>
+<script src="resources/jqLib/jquery-3.2.1.min.js"></script>
 <script>
-/*function submit(){
-	var formData = $('#classForm').serialize();
-	$.ajax({
-		type:'Get',
-		url:'st_class',
-		data:formData,
-		success:function(result){
-			$('#resultArea1').html(result);
-		},
-		error:function(){
-			alert('오류오류~~!~!');
-		}
-	});//ajax
-};//submit()*/
-
-/*function insert(){
+function classReq(){
 	
-	var formData = $('#classForm').serialize();
-	
-	$.ajax({
-		type:'get',
-		url:'st_class',
-		data : formData,
-		success:function(result){
-			open('st_class', "_blank",
-			"toolbar=no,menubar=yes,scrollbars=yes,resizeable=yes,width=400,height=300")
-		},
-		error:function(){
-			alert('다시 시도해주세요');
-		}
-	});
+	var formData= $('#classForm').serialize();
+	console.log('form' +formData);
+	var url = "st_class?"+formData;
+	window.open(url,"_blank",
+	"toolbar=no,menubar=yes,scrollbars=yes,resizeable=yes,width=1200,height=500");
 
-};*/
-
+};//classReq()
 </script>
+
+</head>
+<c:if test="${message != null }">
+	<script>
+		alert('${message}');
+	</script>
+</c:if>
 
 <body>
    <span>학생메뉴>학생메뉴>수업수강>수강신청</span>
-      <form action="st_class" method="get" id="classForm">
+      <form action="" method="get" id="classForm">
     <div id="info">
         <label for="year">학년도 <span>*</span> </label>
-        <input type="number" name="appYear" value="2020" >
+        <input type="number" name="appYear" id="appYear" value="${y}">
       <label for="semester">학기 <span>*</span> </label>
-      <select id="semester" name="appSemester">
+      <select id="semester" name="appSemester" id="appSemester">
         <option value="1semester">1학기</option>
         <option value="summer_va">하계계절학기</option>
         <option value="2semester">2학기</option>
@@ -67,7 +49,7 @@
         <div>
             <img src="resources/image/hamberger.jpg" alt="" class="hamberger">
             수강신청
-            <input type="submit" value="저장" >
+            <input type="button" value="저장" id="submitBtn" onclick ="classReq()">
         </div>
   <!--       <div id="searchBar">
        		<select name="searchType" id="searchType">
@@ -92,13 +74,12 @@
                   <td>${sbjList.subCredit}</td>
                   <td>${sbjList.classifi}</td>
                   <td>${sbjList.professor}</td>
-                  <td><input type="checkbox" name="subjectids" id="chekced"  value="${sbjList.subjectid}"></td>
+                  <td><input type="checkbox" name="subjectids" id="check" value="${sbjList.subjectid}"></td>
               </tr>
               </c:forEach>
           </table>
         </div>
    </form>
-   <div id="resultArea"></div>
 </body>
 
 </html>

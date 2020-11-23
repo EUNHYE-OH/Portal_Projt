@@ -11,6 +11,7 @@ import vo.ClassVO;
 @Repository
 public class ClassDAO{
 
+	
 	@Autowired SqlSession sqlSession;
 	
 	private static final String NS = "com.portal.classMapper.";
@@ -26,4 +27,8 @@ public class ClassDAO{
 	public List<ClassVO> classList(ClassVO cvo){
 		return sqlSession.selectList(NS+"classList",cvo);
 	}//classList
+	
+	public int deleteClass(ClassVO cvo) {
+		return sqlSession.delete(NS+"deleteClass",cvo);
+	}//deleteClass
 }

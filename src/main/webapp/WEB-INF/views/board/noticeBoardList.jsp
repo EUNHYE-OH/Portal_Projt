@@ -67,9 +67,9 @@
 		</div>
 		<div id="pagingDiv">
 			<div>
-<%-- 				<c:if test="${pm.prev}"> --%>
+ 				<c:if test="${pm.prev}"> 
 					<button onclick="location.href='nblist?currPage=${pm.sPage-1}'"  id="prev">이전</button>
-				<%-- </c:if> --%>
+				 </c:if> 
 				<c:forEach begin="${pm.sPage}" end="${pm.ePage }" var="i">
 				
 				<c:if  test="${pm.cri.currPage == i }">
@@ -79,9 +79,9 @@
 					<button onclick="location.href='nblist${pm.searchQuery(i)}'">${i}</button>
 			</c:if>
 				</c:forEach>
-<%-- <c:if test="${pm.next}"> --%>
+		 <c:if test="${pm.next}">
 				<button onclick="location.href='nblist?currPage=${pm.ePage+1}'" id="next">다음</button>
-				<%-- </c:if> --%>
+				</c:if> 
 			</div>
 
 		</div>

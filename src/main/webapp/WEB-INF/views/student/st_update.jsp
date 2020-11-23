@@ -36,7 +36,7 @@
            <input type="image" src="resources/image/SearchButton.jpg" id="search">
         </div> -->
         <div id="form_wrap">
-            본인정보
+           <p> 본인정보</p>
 
             <form action="st_update" method="post">
                 
@@ -62,7 +62,7 @@
                     <tr>
                         <td>핸드폰</td>
                         <td>
-                            <input type="text" name="phone" id="phone" placeholder="숫자만 입력해주세요.">
+                            <input type="text" name="phone" id="phone" value="${list.phone }" placeholder="숫자만 입력해주세요.">
                         </td>
                     </tr>
                     <tr>

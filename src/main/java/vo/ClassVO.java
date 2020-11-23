@@ -1,5 +1,7 @@
 package vo;
 
+import java.util.Arrays;
+import java.util.List;
 
 public class ClassVO extends SubjectVO{
 
@@ -9,16 +11,6 @@ public class ClassVO extends SubjectVO{
 	private String[] subjectids;
 	private String subjectid;
 	
-	
-	public String getSubjectid() {
-		return subjectid;
-	}
-	public void setSubjectid(String subjectid) {
-		this.subjectid = subjectid;
-	}
-	public void setSubjectids(String[] subjectids) {
-		this.subjectids = subjectids;
-	}
 	public String getStudentid() {
 		return studentid;
 	}
@@ -40,10 +32,20 @@ public class ClassVO extends SubjectVO{
 	public String[] getSubjectids() {
 		return subjectids;
 	}
-	public void setSubjectid(String[] subjectid) {
+	public void setSubjectids(String[] subjectids) {
 		this.subjectids = subjectids;
 	}
+	public String getSubjectid() {
+		return subjectid;
+	}
+	public void setSubjectid(String subjectid) {
+		this.subjectid = subjectid;
+	}
+	@Override
+	public String toString() {
+		return "ClassVO [studentid=" + studentid + ", appYear=" + appYear + ", appSemester="
+				+ appSemester + ", subjectids=" + Arrays.toString(subjectids) + ", subjectid=" + subjectid + "]";
+	}
 	
-	
-	
-}
+		
+	}

@@ -13,12 +13,6 @@
     <link rel="stylesheet" href="resources/css/student/st_classList.css">
 <script src="resources/jqLib/jquery-3.2.1.min.js"></script>
 
-
-<c:if test="${message != null }">
-	<script>
-		alert('${message}');
-	</script>
-</c:if>
 </head>
 <body>
   <span>학생메뉴>학생메뉴>수업수강>수강내역 (UCR0123Q)</span>
@@ -33,7 +27,7 @@
         <option value="2semester">2학기</option>
         <option value="winter_va">동계계절학기</option>
     </select>
-    학번/성명 <input type="text" name="studentid" value="${logID }" readonly="readonly">
+    학번/성명 <input type="text" name="studentid" value="${logID}" readonly="readonly">
     <input type="text" name="name" value="${logName}" readonly="readonly">
     <input type="image" src="resources/image/SearchButton.jpg" id="search">
     
@@ -42,9 +36,10 @@
     <div id="contents">
         <div>
             <img src="resources/image/hamberger.jpg" alt="" class="hamberger">
-            수강신청내역 [총 ?? 건]
+            <c:set var = "sum" value="${clList.size()}"/>
+            수강신청내역 [총 <c:out value="${sum}"/> 건]
         </div>
-        <div>
+        <div id="list">
             <table>
                 <tr>
                     <td>NO</td>
@@ -64,7 +59,6 @@
                 </tr>
                 <c:set var="sum" value="${sum + clList.subCredit}"/>
                 </c:forEach>
-                <!--이것만 밑으로 어떻게 보낼까?-->
                 <tr>
                     <td>합계</td>
                     <td></td>

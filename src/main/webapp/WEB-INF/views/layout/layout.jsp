@@ -11,6 +11,45 @@
 <link rel="stylesheet" href="resources/css/student/st_nav.css">
 <link rel="stylesheet" href="resources/css/layout/layout.css">
 <script src="resources/jqLib/jquery-3.2.1.min.js"></script>
+<script>
+var tid;
+var cnt = parseInt(60*30);//초기값(초단위)
+function counter_init() {
+	tid = setInterval("counter_run()", 1000);
+}
+
+function counter_reset() {
+	clearInterval(tid);
+	cnt = parseInt(60*30);
+	counter_init();
+}
+
+function counter_run() {
+	document.all.counter.innerText = time_format(cnt);
+	cnt--;
+	if(cnt < 0) {
+		clearInterval(tid);
+		self.location = "logout";
+	}
+}
+function time_format(s) {
+	var nHour=0;
+	var nMin=0;
+	var nSec=0;
+	if(s>0) {
+		nMin = parseInt(s/60);
+		nSec = s%60;
+
+		if(nMin>60) {
+			nMin = nMin%60;
+		}
+	} 
+	if(nSec<10) nSec = "0"+nSec;
+	if(nMin<10) nMin = "0"+nMin;
+
+	return ""+nMin+":"+nSec;
+}
+</script>
 
 </head>
 <body>
@@ -24,7 +63,8 @@
 		</div>
 		<div id="out_wrap">
 			<div id="timer">
-				<img src="resources/image/clock.jpg" alt="타이머"> <span>timer</span>
+				<img src="resources/image/clock.jpg" alt="타이머"> 
+				<span id="counter"></span><input type="button" value="시간연장" onclick="counter_reset()">
 			</div>
 			<div id="logout">
 				<span>학부생 ${logName}</span> <img id="logout" class="cursor" src="resources/image/logout_icon.gif"
@@ -34,8 +74,7 @@
 	</header>
 	<section>
 		<nav id="nav">
-			<ul>
-				학생메뉴
+			<ul>학생메뉴
 				<li><span>학적정보</span>
 					<ul>
 						<li class="hover_b" id="update">개인정보수정</li>
@@ -81,7 +120,7 @@ $('#logo').click(function(){
 					alert('서버에러(st_update)');
 				}
 			}); //ajax
-		});//update
+		}); //update
 		
 		$('#infomation').click(function() {
 			$.ajax({
@@ -108,6 +147,7 @@ $('#logo').click(function(){
 				}
 			}); //ajax
 		});//st_classList
+		
 		$('#classList').click(function() {
 			$.ajax({
 				type : 'post',
@@ -187,3 +227,6 @@ $('#logo').click(function(){
 	});//cursor
 </script>
 </html>
+<script>
+counter_init();
+</script>

@@ -12,4 +12,6 @@ public interface CService {
 	
 	List<ClassVO> classList(ClassVO cvo);
 	
+	int deleteClass(ClassVO cvo);
+	
 }

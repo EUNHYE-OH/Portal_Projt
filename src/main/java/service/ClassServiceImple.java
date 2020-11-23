@@ -22,10 +22,15 @@ public class ClassServiceImple implements CService{
 	@Override
 	public List<ClassVO> selectClass(ClassVO cvo) {
 		return dao.selectClass(cvo);
-	}
+	}//selectClass
 	
 	@Override
 	public List<ClassVO> classList(ClassVO cvo) {
 		return dao.classList(cvo);
-	}
+	}//classList
+	
+	@Override
+	public int deleteClass(ClassVO cvo) {
+		return dao.deleteClass(cvo);
+	}//deleteClass
 }

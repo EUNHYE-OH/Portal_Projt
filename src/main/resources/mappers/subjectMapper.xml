@@ -6,6 +6,5 @@
 	<select id="sbjList" resultType="vo.SubjectVO">
 		select * from subject
 	</select>
-	
 
 </mapper>
