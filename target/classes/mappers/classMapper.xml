@@ -10,6 +10,7 @@
 		   </foreach>
 		select * from dual
 	</insert>
+	<!-- dual은 table역할 제공해주는 것. 실제로 없는거????나 만찬가지 -->
 
 	<!-- <insert id="clInsert">
 		insert all
